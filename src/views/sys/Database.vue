@@ -75,10 +75,10 @@
 </template>
 
 <script>
-import PageTable from '@/components/PageTable'
-import DicSelect from '@/components/DicSelect'
-import DicName from '@/components/DicName'
-import {getOneDb, saveDatabase, deleteDatabase} from '@/api/sys'
+import PageTable from '../../components/PageTable'
+import DicSelect from '../../components/DicSelect'
+import DicName from '../../components/DicName'
+import {getOneDb, saveDatabase, deleteDatabase} from '../../api/sys'
 
 export default {
   name: 'database',

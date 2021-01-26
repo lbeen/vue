@@ -2,7 +2,6 @@ import axios from 'axios'
 import qs from 'qs'
 import ElementUI from 'element-ui'
 
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.baseURL = '/apis'
 
 export default {
@@ -15,11 +14,11 @@ export default {
       })
       .catch(exception => this.errorHandler(exception, error))
   },
-  getAndCheck(path, param, success, error) {
-    this.get(path, param,
-      response => this.checkResponse(response, success, error),
-      exception => this.errorHandler(exception, error))
-  },
+  // getAndCheck(path, param, success, error) {
+  //   this.get(path, param,
+  //     response => this.checkResponse(response, success, error),
+  //     exception => this.errorHandler(exception, error))
+  // },
   post(path, param, success, error) {
     if (param) {
       param = qs.stringify(param)

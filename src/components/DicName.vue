@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import NetWork from '@/api/network'
+import NetWork from '../api/network'
 
 export default {
   name: 'DicName',

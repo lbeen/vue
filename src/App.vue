@@ -32,11 +32,14 @@ export default {
           index: '1',
           name: '系统配置',
           child: [{
-            index: '/sys/dic',
+            index: 'dic',
             name: '字典管理'
           }, {
-            index: '/sys/database',
+            index: 'database',
             name: '数据库管理'
+          }, {
+            index: 'table',
+            name: '数据表管理'
           }]
         }
       ]

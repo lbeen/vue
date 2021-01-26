@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import {getDics, getDicById, saveDic, refreshDicCache} from '@/api/sys'
+import {getDics, getDicById, saveDic, refreshDicCache} from '../../api/sys'
 
 export default {
   name: 'Dic',

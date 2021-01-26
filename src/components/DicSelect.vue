@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import NetWork from '@/api/network'
+import {getUsedDics} from '../api/sys'
 
 export default {
   name: 'DicSelect',
@@ -33,21 +33,11 @@ export default {
     }
   },
   created() {
-    this.getItems()
+    getUsedDics(this.dicType, data => {
+      this.items = data
+    })
   },
   methods: {
-    getItems() {
-      NetWork.get('dic/getUsedDics', {type: this.dicType}, (data) => {
-        if (data) {
-          for (let i = 0; i < data.length; i++) {
-            this.items.push({
-              label: data[i].name,
-              value: data[i].code
-            })
-          }
-        }
-      })
-    },
     selectChange(value) {
       if (!value) {
         value = ''
