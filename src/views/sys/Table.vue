@@ -330,7 +330,6 @@ export default {
     saveTableColumns() {
       const tableColumns = []
       for (let i = 0; i < this.tableColumns.length; i++) {
-        debugger
         const tableColumn = this.tableColumns[i]
         if (!tableColumn.columnName || !tableColumn.columnDesc || !tableColumn.columnType) {
           this.$message.error('请完善字段信息')
