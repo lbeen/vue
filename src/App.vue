@@ -26,7 +26,7 @@ export default {
   name: 'app',
   data() {
     return {
-      activeIndex: '/sys/dic',
+      activeIndex: '',
       navMenuData: [
         {
           index: '1',
@@ -41,9 +41,29 @@ export default {
             index: '/sys/table',
             name: '数据表管理'
           }]
+        },
+        {
+          index: '2',
+          name: '数据',
+          child: [{
+            index: '/data/import',
+            name: '数据导入'
+          }, {
+            index: '/data/show',
+            name: '数据查询'
+          }]
         }
       ]
     }
+  },
+  created() {
+    const href = window.location.href
+    let path = href.substring(href.indexOf('#') + 1)
+    if (path === '/') {
+      path = this.navMenuData[0].child[0].index
+      window.location.href = href.substring(0, href.indexOf('#') + 1) + path
+    }
+    this.activeIndex = path
   }
 }
 </script>

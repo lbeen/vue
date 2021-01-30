@@ -14,24 +14,40 @@ export default {
       })
       .catch(exception => this.errorHandler(exception, error))
   },
-  // getAndCheck(path, param, success, error) {
-  //   this.get(path, param,
-  //     response => this.checkResponse(response, success, error),
-  //     exception => this.errorHandler(exception, error))
-  // },
+  getAndCheck(path, param, success, error) {
+    this.get(path, param,
+      response => this.checkResponse(response, success, error),
+      exception => this.errorHandler(exception, error))
+  },
   post(path, param, success, error) {
     if (param) {
       param = qs.stringify(param)
     }
     axios.post(path, param)
-      .then(response => this.checkResponse(response, success, error))
+      .then(response => this.checkResponse(response.data, success, error))
       .catch(exception => this.errorHandler(exception, error))
   },
-  checkResponse(response, success, error) {
-    const data = response.data
+  postNotStringify(path, param, success, error) {
+    axios.post(path, param)
+      .then(response => this.checkResponse(response.data, success, error))
+      .catch(exception => this.errorHandler(exception, error))
+  },
+  postNoCheck(path, param, success, error) {
+    if (param) {
+      param = qs.stringify(param)
+    }
+    axios.post(path, param)
+      .then(response => {
+        if (success) {
+          success(response.data)
+        }
+      })
+      .catch(exception => this.errorHandler(exception, error))
+  },
+  checkResponse(data, success, error) {
     if (data.code === 0) {
       if (success) {
-        success(response.data.data)
+        success(data.data)
       }
       if (data.msg) {
         ElementUI.Message.success(data.msg)

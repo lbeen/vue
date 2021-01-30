@@ -234,7 +234,7 @@ export default {
         tableDesc: this.addForm.tableDesc,
         dbId: this.addForm.dbId
       }, () => {
-        this.$refs.pageTable.loadData()
+        this.$refs.pageTable.loadData(1)
         this.isShowAddForm = false
       })
     },
@@ -259,7 +259,7 @@ export default {
         return
       }
       deleteTable(this.deleteId, () => {
-        this.$refs.pageTable.loadData()
+        this.$refs.pageTable.loadData(1)
         this.isShowDeleteConfirm = false
       })
     },
@@ -347,10 +347,10 @@ export default {
         return
       }
 
-      insertColumns(this.currentTableId, tableColumns, {
-        tableId: this.currentTableId,
-        tableColumns: tableColumns
-      }, this.$refs.pageTable.loadData())
+      insertColumns(this.currentTableId, tableColumns, () => {
+        this.$refs.pageTable.loadData(1)
+        this.showColumnsTable = false
+      })
     }
   }
 }

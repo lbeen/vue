@@ -85,16 +85,19 @@ export default {
       param.limit = this.myPageSize
 
       this.tableLoading = true
-      this.total = 0
-      this.tableData = []
-      NetWork.get(this.url, param, (data) => {
+      NetWork.postNoCheck(this.url, param, (data) => {
         if (data) {
           this.total = data.total
           this.tableData = data.list
+        } else {
+          this.total = 0
+          this.tableData = []
         }
         this.tableLoading = false
       }, () => {
         this.tableLoading = false
+        this.total = 0
+        this.tableData = []
       })
     },
     handleSizeChange(pageSize) {

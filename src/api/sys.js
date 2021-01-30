@@ -44,19 +44,19 @@ export const getUsedDics = (type, callBack) => Network.get('dic/getUsedDics', {t
 
 export const saveDic = (dic, success) => Network.post('/dic/saveDic', dic, success)
 
-export const refreshDicCache = () => Network.get('dic/refreshDicCache')
+export const refreshDicCache = () => Network.getAndCheck('dic/refreshDicCache')
 
 export const getTableById = (id, callBack) => Network.get('/table/getTableById', {id: id}, callBack)
 
 export const saveTable = (table, success) => Network.post('/table/saveTable', table, success)
 
-export const refreshTableCache = () => Network.get('table/refreshTableCache')
+export const refreshTableCache = () => Network.getAndCheck('table/refreshTableCache')
 
 export const deleteTable = (id, success) => Network.post('/table/deleteTable', {id: id}, success)
 
-export const getColumnsByTableId = (id, success) => Network.get('/table/getColumnsByTableId', {id: id}, success)
+export const getColumnsByTableId = (id, success) => Network.get('/table/getColumnsByTableId', {tableId: id}, success)
 
-export const insertColumns = (tableId, tableColumns, success) => Network.post('/table/insertColumns', {
-  tableId: this.currentTableId,
+export const insertColumns = (tableId, tableColumns, success) => Network.postNotStringify('/table/insertColumns', {
+  tableId: tableId,
   tableColumns: tableColumns
 }, success)

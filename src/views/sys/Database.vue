@@ -160,7 +160,7 @@ export default {
         dbName: this.addForm.dbName,
         used: this.addForm.used ? '1' : '0'
       }, () => {
-        this.$refs.pageTable.loadData()
+        this.$refs.pageTable.loadData(1)
         this.isShowAddForm = false
       })
     },
