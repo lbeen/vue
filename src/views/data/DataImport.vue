@@ -212,7 +212,6 @@ export default {
         getImportStatus(uuid, data => {
           this.setImportInfo(startTime, data)
           if (data.finish) {
-            debugger
             this.showCloseProgress = true
             this.maxLineSize = 0
             this.columns = []
