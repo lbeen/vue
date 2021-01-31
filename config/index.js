@@ -11,7 +11,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/apis': {
-        target: 'http://localhost:8080',//请求域名
+        // target: 'http://localhost:8080',//请求域名
+        target: 'http://192.168.0.151:8080',//请求域名
         changeOrigin: true,//如果是跨域访问，需要配置这个参数
         pathRewrite: {
           '^/apis': '/'
